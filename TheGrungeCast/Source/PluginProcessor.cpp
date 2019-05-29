@@ -163,9 +163,9 @@ void TheGrungeCastAudioProcessor::processBlock (AudioBuffer<float>& buffer, Midi
     // interleaved by keeping the same state.
     
     float drive = *state->getRawParameterValue("Drive");
-    float range = *state->getRawParameterValue("Drive");
-    float blend = *state->getRawParameterValue("Drive");
-    float volume = *state->getRawParameterValue("Drive");
+    float range = *state->getRawParameterValue("Range");
+    float blend = *state->getRawParameterValue("Blend");
+    float volume = *state->getRawParameterValue("Volume");
     
     for (int channel = 0; channel < totalNumInputChannels; ++channel)
     {
@@ -183,8 +183,7 @@ void TheGrungeCastAudioProcessor::processBlock (AudioBuffer<float>& buffer, Midi
             
            //clip signal
             //amplify signal (get closer to 1, heavier distortion)
-            // original code : *channelData = (((((2.f/float_Pi) * atan(*channelData)) * blend) + (cleanSig * (1.f / blend))) / 2) * volume;
-            *channelData = (((((2.f/float_Pi) * atan(*channelData)) * blend) + (cleanSig * (1.0 - blend))) / 2) * volume;
+            *channelData = (((((2.f/float_Pi) * atan(*channelData)) * blend) + (cleanSig * (1.f - blend))) / 2.f) * volume;
           
             channelData++;
         }
