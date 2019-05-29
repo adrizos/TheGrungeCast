@@ -25,6 +25,16 @@ TheGrungeCastAudioProcessor::TheGrungeCastAudioProcessor()
 #endif
 {
     state = new AudioProcessorValueTreeState(*this, nullptr);
+    state->createAndAddParameter("Drive", "Drive", "Drive", NormalisableRange<float>(0.0, 1.0, 0.0001), 1.0, nullptr, nullptr);
+    state->createAndAddParameter("Range", "Range", "Range", NormalisableRange<float>(0.0, 3000, 0.0001), 1.0, nullptr, nullptr);
+    state->createAndAddParameter("Blend", "Blend", "Blend", NormalisableRange<float>(0.0, 1.0, 0.0001), 1.0, nullptr, nullptr);
+    state->createAndAddParameter("Volume", "Volume", "Volume", NormalisableRange<float>(0.0, 3, 0.0001), 1.0, nullptr, nullptr);
+    
+    state->state = ValueTree("Drive");
+    state->state = ValueTree("Range");
+    state->state = ValueTree("Blend");
+    state->state = ValueTree("Volume");
+    //doesnt seem to make sense but = gets overloaded in constructor and indexs them or something...
 }
 
 TheGrungeCastAudioProcessor::~TheGrungeCastAudioProcessor()
@@ -151,11 +161,33 @@ void TheGrungeCastAudioProcessor::processBlock (AudioBuffer<float>& buffer, Midi
     // the samples and the outer loop is handling the channels.
     // Alternatively, you can process the samples with the channels
     // interleaved by keeping the same state.
+    
+    float drive = *state->getRawParameterValue("Drive");
+    float range = *state->getRawParameterValue("Drive");
+    float blend = *state->getRawParameterValue("Drive");
+    float volume = *state->getRawParameterValue("Drive");
+    
     for (int channel = 0; channel < totalNumInputChannels; ++channel)
     {
         auto* channelData = buffer.getWritePointer (channel);
         
         // ..do something to the data...
+        //the buffer is an array of float values, the audio samples
+        //this is just the audio data we're manipulating
+        
+        for (int sample = 0; sample < buffer.getNumSamples(); sample++){
+            float cleanSig = *channelData; //clean signal before any distortion
+            
+            //apply gain
+            *channelData *= drive * range; //range and drive go together and increases the maximum value of drive
+            
+           //clip signal
+            //amplify signal (get closer to 1, heavier distortion)
+            // original code : *channelData = (((((2.f/float_Pi) * atan(*channelData)) * blend) + (cleanSig * (1.f / blend))) / 2) * volume;
+            *channelData = (((((2.f/float_Pi) * atan(*channelData)) * blend) + (cleanSig * (1.0 - blend))) / 2) * volume;
+          
+            channelData++;
+        }
     }
 }
 AudioProcessorValueTreeState& TheGrungeCastAudioProcessor::getState() {
@@ -179,12 +211,20 @@ void TheGrungeCastAudioProcessor::getStateInformation (MemoryBlock& destData)
     // You should use this method to store your parameters in the memory block.
     // You could do that either as raw data, or use the XML or ValueTree classes
     // as intermediaries to make it easy to save and load complex data.
+    
+    MemoryOutputStream stream(destData, false);
+    state->state.writeToStream(stream);
 }
 
 void TheGrungeCastAudioProcessor::setStateInformation (const void* data, int sizeInBytes)
 {
     // You should use this method to restore your parameters from this memory block,
     // whose contents will have been created by the getStateInformation() call.
+    ValueTree tree = ValueTree::readFromData(data, sizeInBytes);
+    
+    if (tree.isValid()) {
+        state->state = tree;
+    }
 }
 
 //==============================================================================
