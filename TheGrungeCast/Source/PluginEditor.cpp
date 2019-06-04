@@ -64,7 +64,7 @@ void TheGrungeCastAudioProcessorEditor::paint (Graphics& g)
     g.drawText("Range", ((getWidth() / 5) * 3.5) - (100 /2), (getHeight() / 5) + 5, 100, 100, Justification::centred, false);
     g.drawText("Blend", ((getWidth() / 5) * 1.5) - (100 /2), (getHeight() / 2) + 5, 100, 100, Justification::centred, false);
     g.drawText("Volume", ((getWidth() / 5) * 3.5) - (100 /2), (getHeight() / 2) + 5, 100, 100, Justification::centred, false);
-    g.drawText("Tone", ((getWidth() / 5) * 2) , ((getHeight() - 100) - (100 / 2)) + 5, 100, 100, Justification::centred, false);
+    g.drawText("Tone", ((getWidth() / 5) * 2) , (getHeight() - 100) + 5, 100, 100, Justification::centred, false);
     
     
 }
