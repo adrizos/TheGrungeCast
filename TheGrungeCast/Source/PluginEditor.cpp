@@ -31,10 +31,15 @@ TheGrungeCastAudioProcessorEditor::TheGrungeCastAudioProcessorEditor (TheGrungeC
     volumeKnob->setSliderStyle(Slider::Rotary);
     volumeKnob->setTextBoxStyle(Slider::NoTextBox, false, 100, 100);
     
+    addAndMakeVisible(toneKnob = new Slider("Tone"));
+    toneKnob->setSliderStyle(Slider::Rotary);
+    toneKnob->setTextBoxStyle(Slider::NoTextBox, false, 100, 100);
+    
     driveAttachment = new AudioProcessorValueTreeState::SliderAttachment(p.getState(), "Drive", *driveKnob);
     rangeAttachment = new AudioProcessorValueTreeState::SliderAttachment(p.getState(), "Range", *rangeKnob);
     blendAttachment = new AudioProcessorValueTreeState::SliderAttachment(p.getState(), "Blend", *blendKnob);
     volumeAttachment = new AudioProcessorValueTreeState::SliderAttachment(p.getState(), "Volume", *volumeKnob);
+    toneAttachment = new AudioProcessorValueTreeState::SliderAttachment(p.getState(), "Tone", *toneKnob);
     
     // Make sure that before the constructor has finished, you've set the
     // editor's size to whatever you need it to be.
@@ -59,6 +64,7 @@ void TheGrungeCastAudioProcessorEditor::paint (Graphics& g)
     g.drawText("Range", ((getWidth() / 5) * 3.5) - (100 /2), (getHeight() / 5) + 5, 100, 100, Justification::centred, false);
     g.drawText("Blend", ((getWidth() / 5) * 1.5) - (100 /2), (getHeight() / 2) + 5, 100, 100, Justification::centred, false);
     g.drawText("Volume", ((getWidth() / 5) * 3.5) - (100 /2), (getHeight() / 2) + 5, 100, 100, Justification::centred, false);
+    g.drawText("Tone", ((getWidth() / 5) * 2) , ((getHeight() - 100) - (100 / 2)) + 5, 100, 100, Justification::centred, false);
     
     
 }
@@ -77,6 +83,7 @@ void TheGrungeCastAudioProcessorEditor::resized()
     rangeKnob->setBounds(((getWidth() / 5) * 3.5) - (100 /2), (getHeight() / 5) - (100 / 2), 100, 100);
     blendKnob->setBounds(((getWidth() / 5) * 1.5) - (100 /2), (getHeight() / 2) - (100 / 2), 100, 100);
     volumeKnob->setBounds(((getWidth() / 5) * 3.5) - (100 /2), (getHeight() / 2) - (100 / 2), 100, 100);
+    toneKnob->setBounds(((getWidth() / 5) * 2), (getHeight() - 100) - (100 / 2), 100, 100);
     
     
 }
