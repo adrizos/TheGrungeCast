@@ -32,12 +32,14 @@ private:
     ScopedPointer<Slider> rangeKnob;
     ScopedPointer<Slider> blendKnob;
     ScopedPointer<Slider> volumeKnob;
+    ScopedPointer<Slider> toneKnob;
     
     //provides slide to change values ability (creates XML file that stores parameters values (presets etc also)
     ScopedPointer<AudioProcessorValueTreeState::SliderAttachment> driveAttachment;
     ScopedPointer<AudioProcessorValueTreeState::SliderAttachment> rangeAttachment;
     ScopedPointer<AudioProcessorValueTreeState::SliderAttachment> blendAttachment;
     ScopedPointer<AudioProcessorValueTreeState::SliderAttachment> volumeAttachment;
+    ScopedPointer<AudioProcessorValueTreeState::SliderAttachment> toneAttachment;
     
     
     // This reference is provided as a quick way for your editor to
