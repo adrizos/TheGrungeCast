@@ -4,6 +4,8 @@
               companyName="RustBelt Rigs" pluginChannelConfigs="{1,1}, {2,2}">
   <MAINGROUP id="V89Gay" name="TheGrungeCast">
     <GROUP id="{1AA6E87A-EC1E-3FEF-F77A-4DB9B3410E0A}" name="Source">
+      <FILE id="elFOzt" name="Images.cpp" compile="1" resource="0" file="Source/Images.cpp"/>
+      <FILE id="h52nmW" name="Images.h" compile="0" resource="0" file="Source/Images.h"/>
       <FILE id="WloD8B" name="PluginProcessor.cpp" compile="1" resource="0"
             file="Source/PluginProcessor.cpp"/>
       <FILE id="OcvkZg" name="PluginProcessor.h" compile="0" resource="0"

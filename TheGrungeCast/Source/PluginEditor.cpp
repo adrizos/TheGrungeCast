@@ -15,6 +15,9 @@
 TheGrungeCastAudioProcessorEditor::TheGrungeCastAudioProcessorEditor (TheGrungeCastAudioProcessor& p)
 : AudioProcessorEditor (&p), processor (p)
 {
+    //custom image setup
+    backgroundImage = ImageCache::getFromMemory(Images::back1_png, Images::back1_pngSize);
+    
     addAndMakeVisible(driveKnob = new Slider("Drive"));
     driveKnob->setSliderStyle(Slider::Rotary);
     driveKnob->setTextBoxStyle(Slider::NoTextBox, false, 100, 100);
@@ -63,6 +66,9 @@ void TheGrungeCastAudioProcessorEditor::paint (Graphics& g)
 {
     // (Our component is opaque, so we must completely fill the background with a solid colour)
     g.fillAll (Colour (0xffe2984a));
+    
+    //set background image
+    g.drawImage(backgroundImage, 0, 0, 400,500,0,0,400,500);
     
     g.setColour (Colours::white);
     g.setFont (15.0f);
