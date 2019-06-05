@@ -12,6 +12,7 @@
 
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "PluginProcessor.h"
+#include "Images.h"
 
 //==============================================================================
 /**
@@ -41,10 +42,14 @@ private:
     ScopedPointer<AudioProcessorValueTreeState::SliderAttachment> volumeAttachment;
     ScopedPointer<AudioProcessorValueTreeState::SliderAttachment> toneAttachment;
     
+    //Setup for images
+    Image backgroundImage;
     
     // This reference is provided as a quick way for your editor to
     // access the processor object that created it.
     TheGrungeCastAudioProcessor& processor;
+    
+   
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (TheGrungeCastAudioProcessorEditor)
 };

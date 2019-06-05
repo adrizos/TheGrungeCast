@@ -77,6 +77,10 @@
 			isa = PBXBuildFile;
 			fileRef = 0128788767E870C6ED6FB95A;
 		};
+		33E8FA40AF8C00A031DB8766 = {
+			isa = PBXBuildFile;
+			fileRef = 923C9EAD8A6D138040DD6BF1;
+		};
 		54734A308FF326B375669252 = {
 			isa = PBXBuildFile;
 			fileRef = A4F1475445F193C5B4F3DBF0;
@@ -263,6 +267,13 @@
 			path = "../../JuceLibraryCode/include_juce_cryptography.mm";
 			sourceTree = "SOURCE_ROOT";
 		};
+		441D7493685D780F740135BF = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = Images.h;
+			path = ../../Source/Images.h;
+			sourceTree = "SOURCE_ROOT";
+		};
 		4BDF00BD2AB1B93F0B1F1E25 = {
 			isa = PBXFileReference;
 			lastKnownFileType = file;
@@ -408,6 +419,13 @@
 			lastKnownFileType = sourcecode.c.h;
 			name = PluginEditor.h;
 			path = ../../Source/PluginEditor.h;
+			sourceTree = "SOURCE_ROOT";
+		};
+		923C9EAD8A6D138040DD6BF1 = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.cpp.cpp;
+			name = Images.cpp;
+			path = ../../Source/Images.cpp;
 			sourceTree = "SOURCE_ROOT";
 		};
 		995210B50DAF7FE1001CD3E6 = {
@@ -602,6 +620,8 @@
 		373700495AC5FAC83051EC30 = {
 			isa = PBXGroup;
 			children = (
+				923C9EAD8A6D138040DD6BF1,
+				441D7493685D780F740135BF,
 				A4F1475445F193C5B4F3DBF0,
 				E7CB28277E5474CA4EE8A436,
 				311C121C45863D29AA9BC506,
@@ -1467,6 +1487,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				33E8FA40AF8C00A031DB8766,
 				54734A308FF326B375669252,
 				2701F3BA65F082BB6944EB7C,
 				0E43C582ACD416FBCD22B5CC,
