@@ -44,7 +44,7 @@ TheGrungeCastAudioProcessorEditor::TheGrungeCastAudioProcessorEditor (TheGrungeC
     //set track color
     getLookAndFeel().setColour(Slider::rotarySliderFillColourId , Colours::grey);
     //set all Sliders thumb color
-    getLookAndFeel().setColour(Slider::thumbColourId, Colours::silver);
+    getLookAndFeel().setColour(Slider::thumbColourId, Colours::chocolate);
     
     driveAttachment = new AudioProcessorValueTreeState::SliderAttachment(p.getState(), "Drive", *driveKnob);
     rangeAttachment = new AudioProcessorValueTreeState::SliderAttachment(p.getState(), "Range", *rangeKnob);
@@ -72,7 +72,7 @@ void TheGrungeCastAudioProcessorEditor::paint (Graphics& g)
     g.drawImage(backgroundImage, 0, 0, 400,500,0,0,400,500);
     
     //set logo
-    g.drawImageAt(logo, 5, 20);
+    g.drawImageAt(logo, 5, 10);
     
     g.setColour (Colours::white);
     g.setFont (15.0f);
