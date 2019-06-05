@@ -44,6 +44,7 @@ private:
     
     //Setup for images
     Image backgroundImage;
+    Image logo;
     
     // This reference is provided as a quick way for your editor to
     // access the processor object that created it.
