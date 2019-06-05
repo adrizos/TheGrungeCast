@@ -19,6 +19,7 @@ TheGrungeCastAudioProcessorEditor::TheGrungeCastAudioProcessorEditor (TheGrungeC
     driveKnob->setSliderStyle(Slider::Rotary);
     driveKnob->setTextBoxStyle(Slider::NoTextBox, false, 100, 100);
     
+    
     addAndMakeVisible(rangeKnob = new Slider("Range"));
     rangeKnob->setSliderStyle(Slider::Rotary);
     rangeKnob->setTextBoxStyle(Slider::NoTextBox, false, 100, 100);
@@ -34,6 +35,12 @@ TheGrungeCastAudioProcessorEditor::TheGrungeCastAudioProcessorEditor (TheGrungeC
     addAndMakeVisible(toneKnob = new Slider("Tone"));
     toneKnob->setSliderStyle(Slider::Rotary);
     toneKnob->setTextBoxStyle(Slider::NoTextBox, false, 100, 100);
+    
+    //global styling
+    //set track color
+    getLookAndFeel().setColour(Slider::rotarySliderFillColourId , Colours::grey);
+    //set all Sliders thumb color
+    getLookAndFeel().setColour(Slider::thumbColourId, Colours::silver);
     
     driveAttachment = new AudioProcessorValueTreeState::SliderAttachment(p.getState(), "Drive", *driveKnob);
     rangeAttachment = new AudioProcessorValueTreeState::SliderAttachment(p.getState(), "Range", *rangeKnob);
