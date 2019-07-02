@@ -56,6 +56,12 @@ public:
     static const int background2_pngSize;
     static const char* background3_png;
     static const int background3_pngSize;
+    static const char* background4_png;
+    static const int background4_pngSize;
+    static const char* background5_png;
+    static const int background5_pngSize;
+    static const char* background6_png;
+    static const int background6_pngSize;
 
 
 private:

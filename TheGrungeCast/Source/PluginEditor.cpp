@@ -16,12 +16,11 @@ TheGrungeCastAudioProcessorEditor::TheGrungeCastAudioProcessorEditor (TheGrungeC
 : AudioProcessorEditor (&p), processor (p)
 {
     //custom image setup
-    backgroundImage = ImageCache::getFromMemory(Images::background3_png, Images::background3_pngSize);
+    backgroundImage = ImageCache::getFromMemory(Images::background6_png, Images::background6_pngSize);
     
     addAndMakeVisible(driveKnob = new Slider("Drive"));
     driveKnob->setSliderStyle(Slider::Rotary);
     driveKnob->setTextBoxStyle(Slider::NoTextBox, false, 100, 100);
-    
     
     addAndMakeVisible(rangeKnob = new Slider("Range"));
     rangeKnob->setSliderStyle(Slider::Rotary);
@@ -54,7 +53,7 @@ TheGrungeCastAudioProcessorEditor::TheGrungeCastAudioProcessorEditor (TheGrungeC
     // Make sure that before the constructor has finished, you've set the
     // editor's size to whatever you need it to be.
     //setSize (500, 200); first horizontal ratio
-    setSize(400,500);
+    setSize(400,625);
 }
 
 TheGrungeCastAudioProcessorEditor::~TheGrungeCastAudioProcessorEditor()
@@ -68,7 +67,7 @@ void TheGrungeCastAudioProcessorEditor::paint (Graphics& g)
     g.fillAll (Colour (0xffe2984a));
     
     //set background image
-    g.drawImage(backgroundImage, 0, 0, 400,500,0,0,400,500);
+    g.drawImage(backgroundImage, 0, 0, 400,625,0,0,400,625);
     
     
     g.setColour (Colours::white);

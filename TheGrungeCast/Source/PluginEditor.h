@@ -47,6 +47,9 @@ private:
     Image logo;
     Image background2;
     Image background3;
+    Image background4;
+    Image background6;
+    
     
     // This reference is provided as a quick way for your editor to
     // access the processor object that created it.
