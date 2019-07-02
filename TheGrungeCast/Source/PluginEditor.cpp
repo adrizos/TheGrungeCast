@@ -16,7 +16,7 @@ TheGrungeCastAudioProcessorEditor::TheGrungeCastAudioProcessorEditor (TheGrungeC
 : AudioProcessorEditor (&p), processor (p)
 {
     //custom image setup
-    backgroundImage = ImageCache::getFromMemory(Images::background2_png, Images::background2_pngSize);
+    backgroundImage = ImageCache::getFromMemory(Images::background3_png, Images::background3_pngSize);
     
     addAndMakeVisible(driveKnob = new Slider("Drive"));
     driveKnob->setSliderStyle(Slider::Rotary);
@@ -43,7 +43,7 @@ TheGrungeCastAudioProcessorEditor::TheGrungeCastAudioProcessorEditor (TheGrungeC
     //set track color
     getLookAndFeel().setColour(Slider::rotarySliderFillColourId , Colours::grey);
     //set all Sliders thumb color
-    getLookAndFeel().setColour(Slider::thumbColourId, Colours::chocolate);
+    getLookAndFeel().setColour(Slider::thumbColourId, Colour(0xffe47272));
     
     driveAttachment = new AudioProcessorValueTreeState::SliderAttachment(p.getState(), "Drive", *driveKnob);
     rangeAttachment = new AudioProcessorValueTreeState::SliderAttachment(p.getState(), "Range", *rangeKnob);
@@ -74,11 +74,11 @@ void TheGrungeCastAudioProcessorEditor::paint (Graphics& g)
     g.setColour (Colours::white);
     g.setFont (15.0f);
     //g.drawFittedText ("Hello World!", getLocalBounds(), Justification::centred, 1);
-    g.drawText("Drive", ((getWidth() / 5) * 1.5) - (100 /2), ((getHeight() * 2) / 5) + 5, 100, 100, Justification::centred, false);
-    g.drawText("Range", ((getWidth() / 5) * 3.5) - (100 /2), ((getHeight() * 2) / 5) + 5, 100, 100, Justification::centred, false);
-    g.drawText("Blend", ((getWidth() / 5) * 1.65) - (100 /2), ((getHeight() * 2.15) / 3) + 5, 75, 75, Justification::centred, false);
-    g.drawText("Volume", ((getWidth() / 5) * 2.65) - (100 /2), ((getHeight() * 2.15) / 3) + 5, 75, 75, Justification::centred, false);
-    g.drawText("Tone", ((getWidth() / 5) * 3.65) - (100 /2), ((getHeight() * 2.15) / 3) + 5, 75, 75, Justification::centred, false);
+    g.drawText("Drive", 152, 180, 100, 100, Justification::centred, false);
+    g.drawText("Range", 152, 310, 100, 100, Justification::centred, false);
+    g.drawText("Blend", ((getWidth() / 5) * 1.65) - (100 /2), ((getHeight() * 2.15) / 3) + 95, 75, 75, Justification::centred, false);
+    g.drawText("Volume", ((getWidth() / 5) * 2.65) - (100 /2), ((getHeight() * 2.15) / 3) + 95, 75, 75, Justification::centred, false);
+    g.drawText("Tone", ((getWidth() / 5) * 3.65) - (100 /2), ((getHeight() * 2.15) / 3) + 95, 75, 75, Justification::centred, false);
     
     //draw text for weather updates
 //    g.drawText("Current Weather in Seattle: 70F, Cloudy, 45% Percipitation", getWidth() / 95, ((getHeight() * 2.15) / 3) + 55, 395, 100, Justification::centred, false);
@@ -92,16 +92,20 @@ void TheGrungeCastAudioProcessorEditor::resized()
     // This is generally where you'll want to lay out the positions of any
     // subcomponents in your editor..
     
-//    driveKnob->setBounds(((getWidth() / 5) * 1) - (100 /2), (getHeight() / 2) - (100 / 2), 100, 100);
-//    rangeKnob->setBounds(((getWidth() / 5) * 2) - (100 /2), (getHeight() / 2) - (100 / 2), 100, 100);
-//    blendKnob->setBounds(((getWidth() / 5) * 3) - (100 /2), (getHeight() / 2) - (100 / 2), 100, 100);
-//    volumeKnob->setBounds(((getWidth() / 5) * 4) - (100 /2), (getHeight() / 2) - (100 / 2), 100, 100);
     //x,y,width,height
-    driveKnob->setBounds(((getWidth() / 5) * 1.5) - (100 /2), ((getHeight() * 2) / 5) - (100/2), 100, 100);
-    rangeKnob->setBounds(((getWidth() / 5) * 3.5) - (100 /2), ((getHeight() * 2) / 5) - (100 / 2), 100, 100);
-    blendKnob->setBounds(((getWidth() / 5) * 1.65) - (100 /2), ((getHeight() * 2.15) / 3) - (100 / 2), 75, 75);
-    volumeKnob->setBounds(((getWidth() / 5) * 2.65) - (100 /2), ((getHeight() * 2.15) / 3) - (100 / 2), 75, 75);
-    toneKnob->setBounds(((getWidth() / 5) * 3.65) - (100 /2), ((getHeight() * 2.15) / 3) - (100 / 2), 75, 75);
+//    driveKnob->setBounds(((getWidth() / 5) * 1.5) - (100 /2), ((getHeight() * 2) / 5) - (100/2), 100, 100);
+//    rangeKnob->setBounds(((getWidth() / 5) * 3.5) - (100 /2), ((getHeight() * 2) / 5) - (100 / 2), 100, 100);
+//    blendKnob->setBounds(((getWidth() / 5) * 1.65) - (100 /2), ((getHeight() * 2.15) / 3) - (100 / 2), 75, 75);
+//    volumeKnob->setBounds(((getWidth() / 5) * 2.65) - (100 /2), ((getHeight() * 2.15) / 3) - (100 / 2), 75, 75);
+//    toneKnob->setBounds(((getWidth() / 5) * 3.65) - (100 /2), ((getHeight() * 2.15) / 3) - (100 / 2), 75, 75);
+    
+    driveKnob->setBounds(152, 130, 100, 100);
+    rangeKnob->setBounds(152,260 , 100, 100);
+    
+    blendKnob->setBounds(((getWidth() / 5) * 1.65) - (100 /2), ((getHeight() * 2.15) / 2.5) - (100 / 2) + 30, 75, 75);
+    volumeKnob->setBounds(((getWidth() / 5) * 2.65) - (100 /2), ((getHeight() * 2.15) / 2.5) - (100 / 2) + 30, 75, 75);
+    toneKnob->setBounds(((getWidth() / 5) * 3.65) - (100 /2), ((getHeight() * 2.15) / 2.5) - (100 / 2) + 30, 75, 75);
+    
     
 
 }
