@@ -16,8 +16,7 @@ TheGrungeCastAudioProcessorEditor::TheGrungeCastAudioProcessorEditor (TheGrungeC
 : AudioProcessorEditor (&p), processor (p)
 {
     //custom image setup
-    backgroundImage = ImageCache::getFromMemory(Images::back1_png, Images::back1_pngSize);
-    logo = ImageCache::getFromMemory(Images::logo_png, Images::logo_pngSize);
+    backgroundImage = ImageCache::getFromMemory(Images::background2_png, Images::background2_pngSize);
     
     addAndMakeVisible(driveKnob = new Slider("Drive"));
     driveKnob->setSliderStyle(Slider::Rotary);
@@ -71,8 +70,6 @@ void TheGrungeCastAudioProcessorEditor::paint (Graphics& g)
     //set background image
     g.drawImage(backgroundImage, 0, 0, 400,500,0,0,400,500);
     
-    //set logo
-    g.drawImageAt(logo, 5, 10);
     
     g.setColour (Colours::white);
     g.setFont (15.0f);
@@ -84,7 +81,7 @@ void TheGrungeCastAudioProcessorEditor::paint (Graphics& g)
     g.drawText("Tone", ((getWidth() / 5) * 3.65) - (100 /2), ((getHeight() * 2.15) / 3) + 5, 75, 75, Justification::centred, false);
     
     //draw text for weather updates
-    g.drawText("Current Weather in Seattle: 70F, Cloudy, 45% Percipitation", getWidth() / 95, ((getHeight() * 2.15) / 3) + 55, 395, 100, Justification::centred, false);
+//    g.drawText("Current Weather in Seattle: 70F, Cloudy, 45% Percipitation", getWidth() / 95, ((getHeight() * 2.15) / 3) + 55, 395, 100, Justification::centred, false);
     
     
     
