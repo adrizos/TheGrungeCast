@@ -31,9 +31,9 @@ TheGrungeCastAudioProcessor::TheGrungeCastAudioProcessor()
         volume 3 - 1.5
      */
     state->createAndAddParameter("Drive", "Drive", "Drive", NormalisableRange<float>(0.0, 1.0, 0.0001), 1.0, nullptr, nullptr);
-    state->createAndAddParameter("Range", "Range", "Range", NormalisableRange<float>(0.0, 1500, 0.0001), 1.0, nullptr, nullptr);
+    state->createAndAddParameter("Range", "Range", "Range", NormalisableRange<float>(0.0, 2500, 0.0001), 1.0, nullptr, nullptr);
     state->createAndAddParameter("Blend", "Blend", "Blend", NormalisableRange<float>(0.0, 1.0, 0.0001), 1.0, nullptr, nullptr);
-    state->createAndAddParameter("Volume", "Volume", "Volume", NormalisableRange<float>(0.0, .25, 0.0001), .5, nullptr, nullptr);
+    state->createAndAddParameter("Volume", "Volume", "Volume", NormalisableRange<float>(0.0, .5, 0.0001), .5, nullptr, nullptr);
     
     state->state = ValueTree("Drive");
     state->state = ValueTree("Range");
@@ -188,7 +188,7 @@ void TheGrungeCastAudioProcessor::processBlock (AudioBuffer<float>& buffer, Midi
             
            //clip signal
             //amplify signal (get closer to 1, heavier distortion)
-            *channelData = (((((2.f/float_Pi) * atan(1.5 * *channelData)) * blend) + (cleanSig * (1.f - blend))) / 2.f) * volume;
+            *channelData = (((((2.f/float_Pi) * atan(1.2 * *channelData)) * blend) + (cleanSig * (1.f - blend))) / 2.f) * volume;
           
             channelData++;
         }
