@@ -188,7 +188,7 @@ void TheGrungeCastAudioProcessor::processBlock (AudioBuffer<float>& buffer, Midi
             
            //clip signal
             //amplify signal (get closer to 1, heavier distortion)
-            *channelData = (((((2.f/float_Pi) * atan(*channelData)) * blend) + (cleanSig * (1.f - blend))) / 2.f) * volume;
+            *channelData = (((((2.f/float_Pi) * atan(1.5 * *channelData)) * blend) + (cleanSig * (1.f - blend))) / 2.f) * volume;
           
             channelData++;
         }
