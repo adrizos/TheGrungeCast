@@ -25,10 +25,15 @@ TheGrungeCastAudioProcessor::TheGrungeCastAudioProcessor()
 #endif
 {
     state = new AudioProcessorValueTreeState(*this, nullptr);
+    /*
+        changing range and volume max/min
+        range max 3000 - 2250
+        volume 3 - 1.5
+     */
     state->createAndAddParameter("Drive", "Drive", "Drive", NormalisableRange<float>(0.0, 1.0, 0.0001), 1.0, nullptr, nullptr);
-    state->createAndAddParameter("Range", "Range", "Range", NormalisableRange<float>(0.0, 3000, 0.0001), 1.0, nullptr, nullptr);
+    state->createAndAddParameter("Range", "Range", "Range", NormalisableRange<float>(0.0, 1500, 0.0001), 1.0, nullptr, nullptr);
     state->createAndAddParameter("Blend", "Blend", "Blend", NormalisableRange<float>(0.0, 1.0, 0.0001), 1.0, nullptr, nullptr);
-    state->createAndAddParameter("Volume", "Volume", "Volume", NormalisableRange<float>(0.0, 3, 0.0001), 1.0, nullptr, nullptr);
+    state->createAndAddParameter("Volume", "Volume", "Volume", NormalisableRange<float>(0.0, .25, 0.0001), .5, nullptr, nullptr);
     
     state->state = ValueTree("Drive");
     state->state = ValueTree("Range");
